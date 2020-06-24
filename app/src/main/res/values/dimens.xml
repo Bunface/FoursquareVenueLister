@@ -3,4 +3,5 @@
     <dimen name="paddingY">8dp</dimen>
     <dimen name="paddingX">10dp</dimen>
     <dimen name="rec_view_text_size">30sp</dimen>
+    <dimen name="layout_padding">24dp</dimen>
 </resources>

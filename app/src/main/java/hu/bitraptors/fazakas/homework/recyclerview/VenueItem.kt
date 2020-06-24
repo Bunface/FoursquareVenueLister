@@ -1,9 +1,11 @@
 package hu.bitraptors.fazakas.homework.recyclerview
 
-public class VenueItem () {
+import java.io.Serializable
+
+public class VenueItem () :Serializable{
     var name: String? = null
 
-    var description : String? = null
+    var description : String? = "The fearful passage of their death-marked love and the continuance of their parents rage"
 
-    var photo: String?  = null
+    var photo: String?  = "lol"
 }

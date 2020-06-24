@@ -58,38 +58,10 @@ class MainActivity : AppCompatActivity(), VenueAdapter.VenueItemClickListener {
         }.execute()
     }
 
-    /*override fun onCreateOptionsMenu(menu: Menu): Boolean {
-
-        val toolbar = findViewById<Toolbar>(R.id.toolbar)
-        val toolbarMenu = toolbar.menu
-        menuInflater.inflate(R.menu.menu_main, toolbarMenu)
-
-        for (i in 0 until toolbarMenu.size()) {
-            val menuItem = toolbarMenu.getItem(i)
-            menuItem.setOnMenuItemClickListener(MenuItem.OnMenuItemClickListener { item ->
-                onOptionsItemSelected(
-                    item
-                )
-            })
-            if (menuItem.hasSubMenu()) {
-                val subMenu = menuItem.getSubMenu()
-                for (j in 0 until subMenu.size()) {
-                    subMenu.getItem(j)
-                        .setOnMenuItemClickListener(MenuItem.OnMenuItemClickListener { item ->
-                            onOptionsItemSelected(item)
-                        })
-                }
-            }
-        }
-        return super.onCreateOptionsMenu(menu)
-    } */
-
     override fun onItemClicked(item: VenueItem?) {
-        //val intent = Intent(this, RecipeDetailActivity::class.java)
-        //intent.putExtra(RecipeDetailActivity.KEY_RECIPE_ITEM, item)
-        //startActivity(intent)
-        Toast.makeText(this, item?.name, Toast.LENGTH_LONG).show()
-
+        val intent = Intent(this, VenueDetailActivity::class.java)
+        intent.putExtra(VenueDetailActivity.KEY_VENUE_ITEM, item!!)
+        startActivity(intent)
     }
 
 }
