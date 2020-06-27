@@ -7,6 +7,7 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import hu.bitraptors.fazakas.homework.R
+import hu.bitraptors.fazakas.homework.data.VenueItem
 
 
 public class VenueAdapter(private val listener: VenueItemClickListener) :

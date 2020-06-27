@@ -6,15 +6,14 @@ import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import hu.bitraptors.fazakas.homework.recyclerview.VenueAdapter
-import hu.bitraptors.fazakas.homework.recyclerview.VenueItem
+import hu.bitraptors.fazakas.homework.data.VenueItem
 import hu.bitraptors.fazakas.homework.foursquare.FourSquare
 import android.widget.Toast
+import hu.bitraptors.fazakas.homework.foursquare.model.Venue
 import hu.bitraptors.fazakas.homework.foursquare.response.VenueSearchResponse
 import retrofit2.Call
 import retrofit2.Response
 import retrofit2.Callback
-import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
 
 
 class MainActivity : AppCompatActivity(), VenueAdapter.VenueItemClickListener {
@@ -40,30 +39,26 @@ class MainActivity : AppCompatActivity(), VenueAdapter.VenueItemClickListener {
     private fun loadItemsInBackground() {
 
                 val fourSquare = FourSquare.retrofit.create(FourSquare::class.java)
-                val venueRecommendationsCall = fourSquare.requestRecommendations(
-                    FourSquare.CLIENT_ID,
-                    FourSquare.CLIENT_SECRET,
-                    "40.74224,-73.99386"
+
+                val venueRecommendationsCall = fourSquare.requestVenueSearch(
+                    "47.29558,19.02534"
                 )
                 venueRecommendationsCall.enqueue(object: Callback<VenueSearchResponse> {
+
                     override fun onResponse(call: Call<VenueSearchResponse>, response: Response<VenueSearchResponse>) {
-                        val items = mutableListOf<String>()
-                        println(response.code())
-                        response.body()?.response?.venues?.forEach {
-                            items.add(it.name)
-                        }
+
                         val venueItems = mutableListOf<VenueItem>()
-
-                        items.forEach{
-                            venueItems.add(VenueItem(it))
+                        response.body()?.response?.venues?.forEach {venue ->
+                            venueItems.add(VenueItem(venue))
                         }
-
                         adapter!!.update(venueItems)
                     }
+
 
                     override fun onFailure(call: Call<VenueSearchResponse>, t: Throwable) {
                         Toast.makeText(this@MainActivity, t.message, Toast.LENGTH_LONG).show()
                     }
+
                 })
 
     }

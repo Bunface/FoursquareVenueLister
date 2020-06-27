@@ -3,7 +3,7 @@ package hu.bitraptors.fazakas.homework
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import hu.bitraptors.fazakas.homework.fragments.VenueDetailFragment
-import hu.bitraptors.fazakas.homework.recyclerview.VenueItem
+import hu.bitraptors.fazakas.homework.data.VenueItem
 
 
 class VenueDetailActivity : AppCompatActivity() {

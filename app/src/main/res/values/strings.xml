@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Foursquare Venue Lister</string>
+    <string name="no_desc">No description available</string>
+    <string name="cant_download_details">Can\'t download details of venue</string>
+    <string name="phone">Phone:</string>
+    <string name="icon_credit">Icons by: www.flaticon.com/authors/bqlqn</string>
 </resources>

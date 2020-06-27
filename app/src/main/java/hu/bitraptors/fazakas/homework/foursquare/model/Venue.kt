@@ -1,5 +1,6 @@
 package hu.bitraptors.fazakas.homework.foursquare.model
 
+
 data class Venue(
     val categories: List<Category>,
     val id: String,
