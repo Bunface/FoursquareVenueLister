@@ -1,5 +1,6 @@
 package hu.bitraptors.fazakas.homework.data
 
+import hu.bitraptors.fazakas.homework.foursquare.FourSquare
 import hu.bitraptors.fazakas.homework.foursquare.model.Venue
 import java.io.Serializable
 import java.lang.Exception
@@ -23,4 +24,9 @@ class VenueItem (venue: Venue) :Serializable{
 data class CategoryIcon(
     val prefix: String,
     val suffix: String
-) : Serializable
+) : Serializable{
+    val url: String
+    get(){
+        return prefix + FourSquare.ICON_SIZE + suffix
+    }
+}

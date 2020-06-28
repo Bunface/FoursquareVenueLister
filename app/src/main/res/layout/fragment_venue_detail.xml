@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-    <LinearLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
-        android:orientation="vertical" android:layout_width="match_parent"
-        android:layout_height="match_parent">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -36,15 +36,8 @@
 
         </LinearLayout>
 
-        <RatingBar
-            android:id="@+id/VenueDetailRatingBar"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:saveEnabled="true"
-            android:numStars="5"/>
-
         <LinearLayout
+            android:id="@+id/VenueDetailDetailsLinearLayout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
@@ -52,6 +45,14 @@
             android:layout_marginEnd="@dimen/paddingX"
             android:layout_marginBottom="@dimen/paddingY"
             android:layout_marginTop="@dimen/paddingY">
+
+            <RatingBar
+                android:id="@+id/VenueDetailRatingBar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:saveEnabled="true"
+                android:numStars="5"/>
 
             <TextView
                 android:id="@+id/VenueDetailHoursTextView"
@@ -98,16 +99,93 @@
                 android:layout_marginBottom="@dimen/paddingY"
                 android:layout_marginTop="@dimen/paddingY"/>
 
-            <TextView
-                android:id="@+id/VenueDetailCategoriesTextView"
+            <LinearLayout
+                android:id="@+id/VenueDetailIconsLinearLayout"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="@dimen/MediumTextSize"
-                tools:context=".VenueDetailFragment"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:weightSum="4"
+                android:layout_marginStart="@dimen/paddingX"
+                android:layout_marginEnd="@dimen/paddingX"
                 android:layout_marginBottom="@dimen/paddingY"
-                android:layout_marginTop="@dimen/paddingY"/>
+                android:layout_marginTop="@dimen/paddingY">
 
-            <!-- photos -->
+                <ImageView
+                    android:id="@+id/VenueDetailIcon1"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/fragment_venue_detail_photos"
+                    android:layout_weight="1"
+                    tools:context=".VenueDetailFragment"
+                    android:visibility="invisible"
+                    android:background="@color/colorAccent"/>
+
+                <ImageView
+                    android:id="@+id/VenueDetailIcon2"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/fragment_venue_detail_photos"
+                    android:layout_weight="1"
+                    tools:context=".VenueDetailFragment"
+                    android:visibility="invisible"
+                    android:background="@color/colorAccent"/>
+
+                <ImageView
+                    android:id="@+id/VenueDetailIcon3"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/fragment_venue_detail_photos"
+                    android:layout_weight="1"
+                    tools:context=".VenueDetailFragment"
+                    android:visibility="invisible"
+                    android:background="@color/colorAccent"/>
+
+                <ImageView
+                    android:id="@+id/VenueDetailIcon4"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/fragment_venue_detail_photos"
+                    android:layout_weight="1"
+                    tools:context=".VenueDetailFragment"
+                    android:visibility="invisible"
+                    android:background="@color/colorAccent"/>
+
+            </LinearLayout>
+
+            <HorizontalScrollView
+                android:id="@+id/venue_detail_pictures_scroll_view"
+                android:layout_width="match_parent"
+                android:layout_height="300dp"
+                app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:id="@+id/VenueDetailPhoto1"
+                        android:layout_width = "wrap_content"
+                        android:layout_height="match_parent"
+                        tools:context=".VenueDetailFragment"
+                        android:src = "@drawable/location"
+                        android:visibility="invisible"/>
+
+                    <ImageView
+                        android:id="@+id/VenueDetailPhoto2"
+                        android:layout_width = "wrap_content"
+                        android:layout_height="match_parent"
+                        tools:context=".VenueDetailFragment"
+                        android:src = "@drawable/time"
+                        android:visibility="invisible"/>
+
+                    <ImageView
+                        android:id="@+id/VenueDetailPhoto3"
+                        android:layout_width = "wrap_content"
+                        android:layout_height="match_parent"
+                        tools:context=".VenueDetailFragment"
+                        android:visibility="invisible"/>
+
+                </LinearLayout>
+
+            </HorizontalScrollView>
+
 
             <TextView
                 android:layout_width="match_parent"

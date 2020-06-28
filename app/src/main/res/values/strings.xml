@@ -4,4 +4,6 @@
     <string name="cant_download_details">Can\'t download details of venue</string>
     <string name="phone">Phone:</string>
     <string name="icon_credit">Icons by: www.flaticon.com/authors/bqlqn</string>
+    <string name="could_not_decode_ohoto">Could not decode photo</string>
+    <string name="could_not_decode_icon">Could not decode icon</string>
 </resources>

@@ -15,14 +15,22 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/paddingX"
         android:layout_weight="1"
-        android:orientation="vertical">
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/VenueItemIcon"
+            android:layout_width="@dimen/venue_item_icon_size"
+            android:layout_height="@dimen/venue_item_icon_size"
+            android:background="@color/colorAccent"
+            android:visibility="invisible"
+            android:layout_gravity="center_vertical"/>
 
         <TextView
             android:id="@+id/VenueItemNameTextView"
             android:textSize="@dimen/rec_view_text_size"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/paddingX"/>
 
     </LinearLayout>
 

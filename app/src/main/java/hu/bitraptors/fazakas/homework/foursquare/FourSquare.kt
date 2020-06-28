@@ -8,13 +8,18 @@ import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query
+import retrofit2.http.Url
+import okhttp3.ResponseBody
+
+
 
 
 interface FourSquare {
     companion object {
-        const val CLIENT_ID = "OBQME4NGFJE1032H42NYXAFHYN14T1W4OYDRG4XBED2GVA0Z"
-        const val CLIENT_SECRET = "OPTHI5MSQTOMU1F5MR3H2VBOCVXCPH3G321Y5KJTMC2YBZAO"
+        const val CLIENT_ID = "OYAQWFOJF2LY4XSVYFV004AVILR1MMHXBGUIMCQIBJ11A2FN"
+        const val CLIENT_SECRET = "QWCZV3JUGYL4ELHC2RET5GS0XFNFXHWQA5TLPXFYI5NQYU4G"
         const val VERSION = "20200624"
+        const val ICON_SIZE = "64"
 
         val retrofit: Retrofit = Retrofit.Builder()
             .baseUrl("https://api.foursquare.com")
@@ -37,6 +42,14 @@ interface FourSquare {
         @Query("client_secret") client_secret: String = CLIENT_SECRET,
         @Query("v") version: String = VERSION
     ): Call<VenueDetailsResponse>
+
+    @GET
+    fun downloadPhoto(
+        @Url url: String,
+        @Query("client_id") client_id: String = CLIENT_ID,
+        @Query("client_secret") client_secret: String = CLIENT_SECRET,
+        @Query("v") version: String = VERSION
+    ): Call<ResponseBody>
 
 
 }

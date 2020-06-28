@@ -41,7 +41,7 @@ class MainActivity : AppCompatActivity(), VenueAdapter.VenueItemClickListener {
                 val fourSquare = FourSquare.retrofit.create(FourSquare::class.java)
 
                 val venueRecommendationsCall = fourSquare.requestVenueSearch(
-                    "47.29558,19.02534"
+                    "40.779895,-73.959572"
                 )
                 venueRecommendationsCall.enqueue(object: Callback<VenueSearchResponse> {
 
