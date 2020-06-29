@@ -1,35 +1,300 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginStart="@dimen/paddingX"
+    android:layout_marginTop="@dimen/paddingY"
+    android:layout_marginEnd="@dimen/paddingX"
+    android:layout_marginBottom="@dimen/paddingY"
+    android:orientation="vertical">
 
-
-    <TextView
-        android:id="@+id/VenueNameTextView"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:padding="@dimen/layout_padding"
-        android:textIsSelectable="true"
-        tools:context=".VenueDetailFragment" />
-
-    <TextView
-        android:id="@+id/VenueDetailTextView"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:padding="@dimen/layout_padding"
-        android:textIsSelectable="true"
-        tools:context=".VenueDetailFragment" />
-
-    <ImageView
-        android:id="@+id/VenueDetailImageView"
-        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:src="@android:drawable/ic_menu_camera"
-        android:padding="@dimen/layout_padding"
-        tools:context=".VenueDetailFragment" />
+        android:orientation="horizontal">
 
+        <TextView
+            android:id="@+id/VenueDetailNameTextView"
+            android:layout_width="@dimen/venue_detail_title_length"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:textSize="@dimen/venue_detail_title_text_size"
+            tools:context=".VenueDetailFragment" />
+
+        <ImageView
+            android:id="@+id/VenueDetailVerificationImageView"
+            android:layout_width="@dimen/venue_detail_title_height"
+            android:layout_height="@dimen/venue_detail_title_height"
+            android:layout_gravity="center"
+            android:src="@drawable/tick"
+            android:visibility="invisible"
+            tools:context=".VenueDetailFragment" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/VenueDetailDetailsLinearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <RatingBar
+            android:id="@+id/VenueDetailRatingBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:isIndicator="true"
+            android:numStars="5"
+            android:saveEnabled="true" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/paddingY"
+            android:layout_marginBottom="@dimen/paddingY"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="@dimen/venue_item_detail_icon_size"
+                android:layout_height="@dimen/venue_item_detail_icon_size"
+                android:layout_gravity="center_vertical"
+                android:src="@drawable/time" />
+
+            <TextView
+                android:id="@+id/VenueDetailHoursTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/paddingX"
+                android:gravity="center_vertical"
+                android:textSize="@dimen/venue_detail_medium_text_size"
+                tools:context=".VenueDetailFragment" />
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/paddingY"
+            android:layout_marginBottom="@dimen/paddingY"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="@dimen/venue_item_detail_icon_size"
+                android:layout_height="@dimen/venue_item_detail_icon_size"
+                android:layout_gravity="center_vertical"
+                android:src="@drawable/location" />
+
+            <TextView
+                android:id="@+id/VenueDetailLocationTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/paddingX"
+                android:gravity="center_vertical"
+                android:textSize="@dimen/venue_detail_medium_text_size"
+                tools:context=".VenueDetailFragment" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/paddingY"
+            android:layout_marginBottom="@dimen/paddingY"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="@dimen/venue_item_detail_icon_size"
+                android:layout_height="@dimen/venue_item_detail_icon_size"
+                android:layout_gravity="center_vertical"
+                android:src="@drawable/earthgrid" />
+
+            <TextView
+                android:id="@+id/VenueDetailURLTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/paddingX"
+                android:gravity="center_vertical"
+                android:textSize="@dimen/venue_detail_medium_text_size"
+                android:textStyle="italic"
+                tools:context=".VenueDetailFragment" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/paddingY"
+            android:layout_marginBottom="@dimen/paddingY"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="@dimen/venue_item_detail_icon_size"
+                android:layout_height="@dimen/venue_item_detail_icon_size"
+                android:layout_gravity="center_vertical"
+                android:src="@drawable/phone" />
+
+            <TextView
+                android:id="@+id/VenueDetailPhoneTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/paddingX"
+                android:gravity="center_vertical"
+                android:textSize="@dimen/venue_detail_medium_text_size"
+                tools:context=".VenueDetailFragment" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/paddingY"
+            android:layout_marginBottom="@dimen/paddingY"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="@dimen/venue_item_detail_icon_size"
+                android:layout_height="@dimen/venue_item_detail_icon_size"
+                android:layout_gravity="center_vertical"
+                android:src="@drawable/more" />
+
+            <TextView
+                android:id="@+id/VenueDetailDescriptionTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/paddingX"
+                android:gravity="center_vertical"
+                android:textSize="@dimen/venue_detail_medium_text_size"
+                tools:context=".VenueDetailFragment" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/VenueDetailIconsLinearLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="@dimen/paddingY"
+            android:layout_marginBottom="@dimen/venue_detail_cat_icons_padding_bottom"
+            android:orientation="horizontal"
+            android:weightSum="4">
+
+            <ImageView
+                android:id="@+id/VenueDetailIcon1"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/venue_detail_cat_icon_height"
+                android:layout_marginEnd="@dimen/paddingX"
+                android:layout_weight="1"
+                android:background="@color/colorAccent"
+                android:visibility="invisible"
+                tools:context=".VenueDetailFragment" />
+
+            <ImageView
+                android:id="@+id/VenueDetailIcon2"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/venue_detail_cat_icon_height"
+                android:layout_marginStart="@dimen/paddingX"
+                android:layout_marginEnd="@dimen/paddingX"
+                android:layout_weight="1"
+                android:background="@color/colorAccent"
+                android:visibility="invisible"
+                tools:context=".VenueDetailFragment" />
+
+            <ImageView
+                android:id="@+id/VenueDetailIcon3"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/venue_detail_cat_icon_height"
+                android:layout_marginStart="@dimen/paddingX"
+                android:layout_marginEnd="@dimen/paddingX"
+                android:layout_weight="1"
+                android:background="@color/colorAccent"
+                android:visibility="invisible"
+                tools:context=".VenueDetailFragment" />
+
+            <ImageView
+                android:id="@+id/VenueDetailIcon4"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/venue_detail_cat_icon_height"
+                android:layout_marginStart="@dimen/paddingX"
+                android:layout_weight="1"
+                android:background="@color/colorAccent"
+                android:visibility="invisible"
+                tools:context=".VenueDetailFragment" />
+
+        </LinearLayout>
+
+        <HorizontalScrollView
+            android:id="@+id/venue_detail_pictures_scroll_view"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/venue_detail_photos_scroll_bar_height"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/VenueDetailPhoto1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:layout_marginEnd="@dimen/paddingX"
+                    android:adjustViewBounds="true"
+                    android:background="@color/colorPrimary"
+                    android:visibility="invisible"
+                    tools:context=".VenueDetailFragment" />
+
+                <ImageView
+                    android:id="@+id/VenueDetailPhoto2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="@dimen/paddingX"
+                    android:layout_marginEnd="@dimen/paddingX"
+                    android:adjustViewBounds="true"
+                    android:background="@color/colorPrimary"
+                    android:visibility="invisible"
+                    tools:context=".VenueDetailFragment" />
+
+                <ImageView
+                    android:id="@+id/VenueDetailPhoto3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="@dimen/paddingX"
+                    android:layout_marginEnd="@dimen/paddingX"
+                    android:adjustViewBounds="true"
+                    android:background="@color/colorPrimary"
+                    android:visibility="invisible"
+                    tools:context=".VenueDetailFragment" />
+
+                <ImageView
+                    android:id="@+id/VenueDetailPhoto4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="@dimen/paddingX"
+                    android:adjustViewBounds="true"
+                    android:background="@color/colorPrimary"
+                    android:visibility="invisible"
+                    tools:context=".VenueDetailFragment" />
+
+            </LinearLayout>
+
+        </HorizontalScrollView>
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/venue_detail_credit_padding_top"
+            android:text="@string/icon_credit"
+            android:textSize="@dimen/venue_detail_small_text_size"
+            tools:context=".VenueDetailFragment" />
+
+
+    </LinearLayout>
 
 </LinearLayout>

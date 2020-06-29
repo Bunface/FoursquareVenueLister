@@ -3,7 +3,7 @@ package hu.bitraptors.fazakas.homework
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import hu.bitraptors.fazakas.homework.fragments.VenueDetailFragment
-import hu.bitraptors.fazakas.homework.recyclerview.VenueItem
+import hu.bitraptors.fazakas.homework.data.VenueItem
 
 
 class VenueDetailActivity : AppCompatActivity() {
@@ -17,8 +17,8 @@ class VenueDetailActivity : AppCompatActivity() {
         setContentView(R.layout.activity_venue_detail)
 
         val item = intent.getSerializableExtra(KEY_VENUE_ITEM) as VenueItem
-        val pageDetailFragment = VenueDetailFragment.newInstance(item)
 
+        val pageDetailFragment = VenueDetailFragment.newInstance(item)
         val fragmentTransaction = supportFragmentManager.beginTransaction()
         fragmentTransaction.add(R.id.venue_detail_scroll_view, pageDetailFragment)
         fragmentTransaction.commit()

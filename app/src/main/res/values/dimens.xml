@@ -2,6 +2,16 @@
 <resources>
     <dimen name="paddingY">8dp</dimen>
     <dimen name="paddingX">10dp</dimen>
-    <dimen name="rec_view_text_size">30sp</dimen>
-    <dimen name="layout_padding">24dp</dimen>
+    <dimen name="venue_item_text_size">30sp</dimen>
+    <dimen name="venue_detail_title_height">55dp</dimen>
+    <dimen name="venue_detail_title_text_size">32sp</dimen>
+    <dimen name="venue_detail_medium_text_size">20sp</dimen>
+    <dimen name="venue_detail_small_text_size">15sp</dimen>
+    <dimen name="venue_detail_cat_icon_height">75dp</dimen>
+    <dimen name="venue_item_icon_size">40dp</dimen>
+    <dimen name="venue_item_detail_icon_size">55dp</dimen>
+    <dimen name="venue_detail_credit_padding_top">40dp</dimen>
+    <dimen name="venue_detail_cat_icons_padding_bottom">20dp</dimen>
+    <dimen name="venue_detail_title_length">333dp</dimen>
+    <dimen name="venue_detail_photos_scroll_bar_height">300dp</dimen>
 </resources>

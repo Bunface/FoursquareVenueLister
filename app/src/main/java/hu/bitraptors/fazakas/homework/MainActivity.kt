@@ -1,17 +1,19 @@
 package hu.bitraptors.fazakas.homework
 
 import android.content.Intent
-import android.os.AsyncTask
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.Menu
-import android.view.MenuItem
-import android.widget.Toast
-import androidx.appcompat.widget.Toolbar
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import hu.bitraptors.fazakas.homework.recyclerview.VenueAdapter
-import hu.bitraptors.fazakas.homework.recyclerview.VenueItem
+import hu.bitraptors.fazakas.homework.data.VenueItem
+import hu.bitraptors.fazakas.homework.foursquare.FourSquare
+import android.widget.Toast
+import hu.bitraptors.fazakas.homework.foursquare.response.VenueSearchResponse
+import retrofit2.Call
+import retrofit2.Response
+import retrofit2.Callback
+
 
 class MainActivity : AppCompatActivity(), VenueAdapter.VenueItemClickListener {
 
@@ -34,28 +36,33 @@ class MainActivity : AppCompatActivity(), VenueAdapter.VenueItemClickListener {
     }
 
     private fun loadItemsInBackground() {
-        object : AsyncTask<Void, Void, List<VenueItem>>() {
 
-            override fun doInBackground(vararg voids: Void): List<VenueItem> {
-                val item1 = VenueItem()
-                item1.name = "Venue1"
-                val item2 = VenueItem()
-                item2.name = "Venue2"
-                val item3 = VenueItem()
-                item3.name = "Venue3"
+        val fourSquare = FourSquare.retrofit.create(FourSquare::class.java)
 
-                val items = mutableListOf<VenueItem>()
-                items.add(item1)
-                items.add(item2)
-                items.add(item3)
+        val venueRecommendationsCall = fourSquare.requestVenueSearch(
+            "40.779895,-73.959572"
+        )
+        venueRecommendationsCall.enqueue(object : Callback<VenueSearchResponse> {
 
-                return items
+            override fun onResponse(
+                call: Call<VenueSearchResponse>,
+                response: Response<VenueSearchResponse>
+            ) {
+
+                val venueItems = mutableListOf<VenueItem>()
+                response.body()?.response?.venues?.forEach { venue ->
+                    venueItems.add(VenueItem(venue))
+                }
+                adapter!!.update(venueItems)
             }
 
-            override fun onPostExecute(pageItems: List<VenueItem>) {
-                adapter!!.update(pageItems)
+
+            override fun onFailure(call: Call<VenueSearchResponse>, t: Throwable) {
+                Toast.makeText(this@MainActivity, t.message, Toast.LENGTH_LONG).show()
             }
-        }.execute()
+
+        })
+
     }
 
     override fun onItemClicked(item: VenueItem?) {
@@ -63,5 +70,6 @@ class MainActivity : AppCompatActivity(), VenueAdapter.VenueItemClickListener {
         intent.putExtra(VenueDetailActivity.KEY_VENUE_ITEM, item!!)
         startActivity(intent)
     }
+
 
 }
