@@ -30,7 +30,7 @@ class LocationProviderForFoursquare(
         }
     }
 
-    fun startLocationMonitoring() {
+    fun refreshLocation() {
         val locationRequest = LocationRequest()
         locationRequest.interval = REQUEST_INTERVAL
         locationRequest.fastestInterval = REQUEST_FASTEST_INTERVAL
@@ -42,7 +42,7 @@ class LocationProviderForFoursquare(
         )
     }
 
-    fun stopLocationMonitoring() {
+    fun stopRefreshingLocation() {
         fusedLocationClient.removeLocationUpdates(locationCallback)
     }
 
