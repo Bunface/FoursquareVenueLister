@@ -9,7 +9,6 @@ import hu.bitraptors.fazakas.homework.recyclerview.VenueAdapter
 import hu.bitraptors.fazakas.homework.data.VenueItem
 import hu.bitraptors.fazakas.homework.foursquare.FourSquare
 import android.widget.Toast
-import hu.bitraptors.fazakas.homework.foursquare.model.Venue
 import hu.bitraptors.fazakas.homework.foursquare.response.VenueSearchResponse
 import retrofit2.Call
 import retrofit2.Response

@@ -1,12 +1,13 @@
 package hu.bitraptors.fazakas.homework.data
 
-import hu.bitraptors.fazakas.homework.foursquare.FourSquare
 import hu.bitraptors.fazakas.homework.foursquare.model.Venue
 import java.io.Serializable
 import java.lang.Exception
 
 class VenueItem (venue: Venue) :Serializable{
-
+    companion object{
+        const val ICON_SIZE = "64"
+    }
     val id: String = venue.id
 
     val name: String = venue.name
@@ -27,6 +28,6 @@ data class CategoryIcon(
 ) : Serializable{
     val url: String
     get(){
-        return prefix + FourSquare.ICON_SIZE + suffix
+        return prefix + VenueItem.ICON_SIZE + suffix
     }
 }

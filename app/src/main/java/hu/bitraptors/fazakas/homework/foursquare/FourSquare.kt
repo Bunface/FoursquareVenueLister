@@ -16,10 +16,9 @@ import okhttp3.ResponseBody
 
 interface FourSquare {
     companion object {
-        const val CLIENT_ID = "OYAQWFOJF2LY4XSVYFV004AVILR1MMHXBGUIMCQIBJ11A2FN"
-        const val CLIENT_SECRET = "QWCZV3JUGYL4ELHC2RET5GS0XFNFXHWQA5TLPXFYI5NQYU4G"
+        const val CLIENT_ID = "ZXCSBPOO4XVGV2EQFNLGTBJX3GXY0OQGTVYM11NBTYC4ELV0"
+        const val CLIENT_SECRET = "C5LVYM3OFJY2ITT3LL5V5QPNY1DGS1T4JZQB0ERYHQXWAJRW"
         const val VERSION = "20200624"
-        const val ICON_SIZE = "64"
 
         val retrofit: Retrofit = Retrofit.Builder()
             .baseUrl("https://api.foursquare.com")

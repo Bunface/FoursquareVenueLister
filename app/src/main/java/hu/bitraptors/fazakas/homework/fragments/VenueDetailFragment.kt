@@ -1,6 +1,5 @@
 package hu.bitraptors.fazakas.homework.fragments
 
-import android.graphics.Bitmap
 import androidx.fragment.app.Fragment
 import hu.bitraptors.fazakas.homework.data.VenueItem
 import android.os.Bundle
@@ -33,6 +32,7 @@ class VenueDetailFragment : Fragment() {
     private lateinit var urlTextView: TextView
     private lateinit var phoneTextView: TextView
     private lateinit var detailsLinearLayout: LinearLayout
+    private lateinit var venueDetailIconsLinearLayout: LinearLayout
 
     private val categoryIcons: MutableList<ImageView> = mutableListOf()
     private var photos: MutableList<ImageView> = mutableListOf()
@@ -40,7 +40,6 @@ class VenueDetailFragment : Fragment() {
     companion object{
         lateinit var selectedVenueItem : VenueItem
         private var selectedVenueDetailItem: VenueDetailItem? = null
-        const val ICON_HEIGHT = 40
 
         fun newInstance(item: VenueItem) : VenueDetailFragment{
             selectedVenueItem = item
@@ -75,7 +74,7 @@ class VenueDetailFragment : Fragment() {
 
     private fun getIcons(){
         var i= 0
-        selectedVenueDetailItem?.getMaxFourCategoryIcons()?.forEach { icon ->
+        selectedVenueDetailItem?.getCategoryIcons()?.forEach { icon ->
             fillIcon(categoryIcons[i], icon)
             i++
         }
@@ -106,7 +105,7 @@ class VenueDetailFragment : Fragment() {
 
     private fun getPhotos(){
         var i= 0
-        selectedVenueDetailItem?.getMaxThreePhotos()?.forEach { photo ->
+        selectedVenueDetailItem?.getVenuePhotos()?.forEach { photo ->
             fillPhoto(photos[i], photo)
             i++
         }
@@ -159,32 +158,15 @@ class VenueDetailFragment : Fragment() {
     }
 
     private fun initLayout(){
-        val density = resources.displayMetrics.density;
-        val size = (ICON_HEIGHT * density).roundToInt()
 
         nameTextView = view!!.findViewById(R.id.VenueDetailNameTextView)
         verificationImageView = view!!.findViewById(R.id.VenueDetailVerificationImageView)
         ratingBar = view!!.findViewById(R.id.VenueDetailRatingBar)
         hoursTextView = view!!.findViewById(R.id.VenueDetailHoursTextView)
-            val clockDrawable =  resources.getDrawable(R.drawable.time)
-            clockDrawable.setBounds(0, 0, size, size)
-            hoursTextView.setCompoundDrawables(clockDrawable, null, null, null)
         locationTextView = view!!.findViewById(R.id.VenueDetailLocationTextView)
-            val locationDrawable =  resources.getDrawable(R.drawable.location)
-            locationDrawable.setBounds(0, 0, size, size)
-            locationTextView.setCompoundDrawables(locationDrawable, null, null, null)
         descriptionTextView = view!!.findViewById(R.id.VenueDetailDescriptionTextView)
-            val moreDrawable =  resources.getDrawable(R.drawable.more)
-            moreDrawable.setBounds(0, 0, size, size)
-            descriptionTextView.setCompoundDrawables(moreDrawable, null, null, null)
         urlTextView = view!!.findViewById(R.id.VenueDetailURLTextView)
-            val webDrawable =  resources.getDrawable(R.drawable.earthgrid)
-            webDrawable.setBounds(0, 0, size, size)
-            urlTextView.setCompoundDrawables(webDrawable, null, null, null)
         phoneTextView = view!!.findViewById(R.id.VenueDetailPhoneTextView)
-            val phoneDrawable =  resources.getDrawable(R.drawable.phone)
-            phoneDrawable.setBounds(0, 0, size, size)
-            phoneTextView.setCompoundDrawables(phoneDrawable, null, null, null)
 
         categoryIcons.add(view!!.findViewById(R.id.VenueDetailIcon1))
         categoryIcons.add(view!!.findViewById(R.id.VenueDetailIcon2))
@@ -194,6 +176,9 @@ class VenueDetailFragment : Fragment() {
         photos.add(view!!.findViewById(R.id.VenueDetailPhoto1))
         photos.add(view!!.findViewById(R.id.VenueDetailPhoto2))
         photos.add(view!!.findViewById(R.id.VenueDetailPhoto3))
+        photos.add(view!!.findViewById(R.id.VenueDetailPhoto4))
+
+        venueDetailIconsLinearLayout = view!!.findViewById(R.id.VenueDetailDetailsLinearLayout)
 
         detailsLinearLayout = view!!.findViewById(R.id.VenueDetailDetailsLinearLayout)
     }

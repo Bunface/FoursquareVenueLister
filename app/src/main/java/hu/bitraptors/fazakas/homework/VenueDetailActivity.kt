@@ -23,6 +23,5 @@ class VenueDetailActivity : AppCompatActivity() {
         fragmentTransaction.add(R.id.venue_detail_scroll_view, pageDetailFragment)
         fragmentTransaction.commit()
 
-
     }
 }
