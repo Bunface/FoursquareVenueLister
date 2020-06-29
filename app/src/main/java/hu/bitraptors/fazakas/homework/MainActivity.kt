@@ -10,8 +10,10 @@ import hu.bitraptors.fazakas.homework.recyclerview.VenueAdapter
 import hu.bitraptors.fazakas.homework.data.VenueItem
 import hu.bitraptors.fazakas.homework.foursquare.FourSquare
 import android.widget.Toast
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import hu.bitraptors.fazakas.homework.foursquare.response.VenueSearchResponse
 import hu.bitraptors.fazakas.homework.location.LocationProviderForFoursquare
+import kotlinx.android.synthetic.main.content_main.*
 import retrofit2.Call
 import retrofit2.Response
 import retrofit2.Callback
@@ -30,15 +32,22 @@ class MainActivity :
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         setContentView(R.layout.activity_main)
+        setupRefreshLayout()
         initRecyclerView()
-        locationProviderForFoursquare = LocationProviderForFoursquare (this, this )
-        locationProviderForFoursquare.startLocationMonitoring()
+
+        setupLocation()
     }
 
-    override fun onStop(){
-        locationProviderForFoursquare.stopLocationMonitoring()
-        super.onStop()
+
+
+    private fun setupRefreshLayout(){
+        val venueListSwipeRefreshLayout : SwipeRefreshLayout= findViewById(R.id.VenueListSwipeRefreshLayout)
+        venueListSwipeRefreshLayout.setOnRefreshListener {
+            locationProviderForFoursquare.startLocationMonitoring()
+            venueListSwipeRefreshLayout.isRefreshing = false
+        }
     }
 
     private fun initRecyclerView() {
@@ -47,6 +56,11 @@ class MainActivity :
         loadItemsInBackground()
         recyclerView.layoutManager = LinearLayoutManager(this)
         recyclerView.adapter = adapter
+    }
+
+    private fun setupLocation(){
+        locationProviderForFoursquare = LocationProviderForFoursquare (this, this )
+        locationProviderForFoursquare.startLocationMonitoring()
     }
 
     private fun loadItemsInBackground() {
@@ -98,4 +112,10 @@ class MainActivity :
         initRecyclerView()
         locationProviderForFoursquare.stopLocationMonitoring()
     }
+
+    override fun onStop(){
+        locationProviderForFoursquare.stopLocationMonitoring()
+        super.onStop()
+    }
+
 }
