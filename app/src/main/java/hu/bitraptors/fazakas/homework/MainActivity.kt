@@ -37,28 +37,31 @@ class MainActivity : AppCompatActivity(), VenueAdapter.VenueItemClickListener {
 
     private fun loadItemsInBackground() {
 
-                val fourSquare = FourSquare.retrofit.create(FourSquare::class.java)
+        val fourSquare = FourSquare.retrofit.create(FourSquare::class.java)
 
-                val venueRecommendationsCall = fourSquare.requestVenueSearch(
-                    "40.779895,-73.959572"
-                )
-                venueRecommendationsCall.enqueue(object: Callback<VenueSearchResponse> {
+        val venueRecommendationsCall = fourSquare.requestVenueSearch(
+            "40.779895,-73.959572"
+        )
+        venueRecommendationsCall.enqueue(object : Callback<VenueSearchResponse> {
 
-                    override fun onResponse(call: Call<VenueSearchResponse>, response: Response<VenueSearchResponse>) {
+            override fun onResponse(
+                call: Call<VenueSearchResponse>,
+                response: Response<VenueSearchResponse>
+            ) {
 
-                        val venueItems = mutableListOf<VenueItem>()
-                        response.body()?.response?.venues?.forEach {venue ->
-                            venueItems.add(VenueItem(venue))
-                        }
-                        adapter!!.update(venueItems)
-                    }
+                val venueItems = mutableListOf<VenueItem>()
+                response.body()?.response?.venues?.forEach { venue ->
+                    venueItems.add(VenueItem(venue))
+                }
+                adapter!!.update(venueItems)
+            }
 
 
-                    override fun onFailure(call: Call<VenueSearchResponse>, t: Throwable) {
-                        Toast.makeText(this@MainActivity, t.message, Toast.LENGTH_LONG).show()
-                    }
+            override fun onFailure(call: Call<VenueSearchResponse>, t: Throwable) {
+                Toast.makeText(this@MainActivity, t.message, Toast.LENGTH_LONG).show()
+            }
 
-                })
+        })
 
     }
 

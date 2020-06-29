@@ -11,9 +11,6 @@ import retrofit2.http.Query
 import retrofit2.http.Url
 import okhttp3.ResponseBody
 
-
-
-
 interface FourSquare {
     companion object {
         const val CLIENT_ID = "ZXCSBPOO4XVGV2EQFNLGTBJX3GXY0OQGTVYM11NBTYC4ELV0"
@@ -49,6 +46,5 @@ interface FourSquare {
         @Query("client_secret") client_secret: String = CLIENT_SECRET,
         @Query("v") version: String = VERSION
     ): Call<ResponseBody>
-
 
 }

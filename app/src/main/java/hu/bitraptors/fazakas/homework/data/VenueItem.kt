@@ -12,14 +12,15 @@ class VenueItem (venue: Venue) :Serializable{
 
     val name: String = venue.name
 
-    val categoryIcon: CategoryIcon? = try {
-         CategoryIcon(
-             venue.categories[0].icon.prefix,
-             venue.categories[0].icon.suffix
-         )
-     }catch(e: Exception){
-         null
-     }
+    val categoryIcon: CategoryIcon?
+        = try {
+             CategoryIcon(
+                 venue.categories[0].icon.prefix,
+                 venue.categories[0].icon.suffix
+             )
+         }catch(e: Exception){
+             null
+         }
 }
 
 data class CategoryIcon(
