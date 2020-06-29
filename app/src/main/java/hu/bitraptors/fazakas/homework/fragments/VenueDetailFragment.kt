@@ -1,24 +1,23 @@
 package hu.bitraptors.fazakas.homework.fragments
 
-import androidx.fragment.app.Fragment
-import hu.bitraptors.fazakas.homework.data.VenueItem
+import android.graphics.BitmapFactory
 import android.os.Bundle
-import android.view.ViewGroup
 import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
+import android.widget.*
+import androidx.fragment.app.Fragment
+import hu.bitraptors.fazakas.homework.R
+import hu.bitraptors.fazakas.homework.data.CategoryIcon
 import hu.bitraptors.fazakas.homework.data.VenueDetailItem
+import hu.bitraptors.fazakas.homework.data.VenueItem
 import hu.bitraptors.fazakas.homework.foursquare.FourSquare
 import hu.bitraptors.fazakas.homework.foursquare.model.VenueX
 import hu.bitraptors.fazakas.homework.foursquare.response.VenueDetailsResponse
+import okhttp3.ResponseBody
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import kotlin.math.roundToInt
-import okhttp3.ResponseBody
-import android.graphics.BitmapFactory
-import android.widget.*
-import hu.bitraptors.fazakas.homework.R
-import hu.bitraptors.fazakas.homework.data.CategoryIcon
 
 
 class VenueDetailFragment : Fragment() {

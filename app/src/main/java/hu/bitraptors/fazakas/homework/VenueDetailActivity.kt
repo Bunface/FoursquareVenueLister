@@ -1,9 +1,9 @@
 package hu.bitraptors.fazakas.homework
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import hu.bitraptors.fazakas.homework.fragments.VenueDetailFragment
+import androidx.appcompat.app.AppCompatActivity
 import hu.bitraptors.fazakas.homework.data.VenueItem
+import hu.bitraptors.fazakas.homework.fragments.VenueDetailFragment
 
 
 class VenueDetailActivity : AppCompatActivity() {
